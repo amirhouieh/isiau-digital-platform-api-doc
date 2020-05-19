@@ -39,31 +39,91 @@ So in above example the files are accessible via:
         "trackingId": string,
         "fileExtension": string
       },
-      "content": {
-        "text": string,
-        "html": string,
-        "images": [
-          {
-            "responsiveUrls": [string],
-            "blurHash": string,
-            "_id": string,
-            "originalUrl": string,
-            "title": string,
-            "alt": string,
-            "width": number,
-            "height": number
-          }
-        ],
-        "videos": [
-	        source: string
-		    format: string
-		    url: string
-        ]
-      },
+      "content": GDoc|GSheet|Video|Image|Audio|HTML|PDF,
       "_id": string,
     }
 ```
+### CONTENT Types/Schema:
+```
+@Image
+{  
+  responsiveUrls: [String],  
+  originalUrl: String,  
+  alt: String,  
+  title: String,  
+  width: Number,  
+  height: Number,  
+  blurHash: {type: String, default: null}  
+}
+```
+```
+@Video
+{  
+  url: String,  
+  source: String,  
+  embed: String,  
+  alt: String,  
+  blurHash: {type: String, default: null},  
+  width: Number,  
+  height: Number,  
+  originalName: String  
+}
+```
+```
+@Audio
+{  
+  alt: String,  
+  originalUrl: String,  
+  originalName: String,  
+  remoteOnly: {type: Boolean, default: false},  
+  urls: [
+	  {  
+        url: String,    
+        format: {  
+            ext: String,  
+			type: String
+        }  
+    }]  
+}
+```
+```
+@Pdf
+{  
+  originalUrl: String,  
+  alt: String,  
+  remoteOnly: {type: Boolean, default: false}  
+}
+```
+```
+@HTML
+{  
+  originalUrl: String,  
+  alt: String,  
+  html: String,  
+  text: String  
+}
+```
 
+```
+@Gdoc Content
+{  
+  text: String,  
+  html: String,  
+  images: [Image],  
+  videos: [Video]
+}
+```
+```
+@GSheet Content
+{  
+    sheets:{  
+      name: String,  
+	  head: [String],  
+	  rows: [[String]]  
+    },  
+  images: [Image]  
+}
+```
 
 ### Supported Mime Types
 ```
@@ -80,6 +140,7 @@ So in above example the files are accessible via:
 "image/gif",
 "text/html",
 "audio/mp3",
+"audio/mpeg",
 "audio/ogg",
 "audio/wav",
 "text/xml"
