@@ -15,9 +15,9 @@ The API endpoints are a mirror of the Digital Platform Google Drive's folder str
 	|   +-- bar.jpg
 ``` 
 So in above example the files are accessible via:
-- https://dp.isiaurbino.net/api/hello.gdoc
-- https://dp.isiaurbino.net/api/xpub/my-amazing-project/foo.gdoc
-- https://dp.isiaurbino.net/api/xpub/my-amazing-project/bar.jpg
+- https://dp.isiaurbino.net/api/hello
+- https://dp.isiaurbino.net/api/xpub/my-amazing-project/foo
+- https://dp.isiaurbino.net/api/xpub/my-amazing-project/bar
 
 ### File Entity (data fields)
 
